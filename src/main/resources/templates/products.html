@@ -1,0 +1,33 @@
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Products</title>
+</head>
+
+<body>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Cost</th>
+        <th>Link</th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.getId()}">VALUE</td>
+        <td th:text="${product.getTitle()}">VALUE</td>
+        <td th:text="${product.getCost()}">VALUE</td>
+        <td>
+            <a th:href="@{http://localhost:8080/allProducts/{id}(id=${product.getId()})}">Link</a>
+        </td>
+    </tr>
+</table>
+
+
+
+<!--/*@thymesVar id="products" type=""*/-->
+<span  th:each="product :${products}"></span>
+</body>
+</html>
