@@ -5,6 +5,11 @@
     <title>OneProduct</title>
 </head>
 <body>
+<p><a href="http://localhost:8080/products" style="text-decoration: none">Main</a></p>
+<p><a href="http://localhost:8080/add" style="text-decoration: none">Add new product</a></p>
 <p th:text="${product.getTitle()} + ' costs: ' + ${product.getCost()}">VALUE</p>
+<form th:method="POST" th:action="@{http://localhost:8080/deleteProduct/{id}(id=${product.getId()})}">
+    <input type="submit" value="Delete">
+</form>
 </body>
 </html>

@@ -18,14 +18,14 @@ public class ProductController {
         this.repository = repository;
     }
 
-    @GetMapping("/allProducts")
+    @GetMapping("/products")
     public String all(Model model) {
         List<Products> all = repository.findAll();
         model.addAttribute("products", all);
         return "products";
     }
 
-    @GetMapping("/allProducts/{id}")
+    @GetMapping("/products/{id}")
     public String findOneById(Model model, @PathVariable Long id) {
         Products product = null;
         Optional<Products> byId = repository.findById(id);
@@ -44,6 +44,12 @@ public class ProductController {
     @PostMapping("/update")
     public String addProduct(@ModelAttribute("product") Products product) {
         repository.save(product);
-        return "redirect:/allProducts";
+        return "redirect:/products";
+    }
+
+    @PostMapping("/deleteProduct/{id}")
+    public String delete(@PathVariable long id) {
+        repository.deleteById(id);
+        return "redirect:/products";
     }
 }
