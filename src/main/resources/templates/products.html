@@ -15,7 +15,6 @@
         <th>Title</th>
         <th>Cost</th>
         <th>Link</th>
-<!--        <th>Delete</th>-->
     </tr>
     <tr th:each="product : ${products}">
         <td th:text="${product.getId()}">VALUE</td>
@@ -24,9 +23,6 @@
         <td>
             <a th:href="@{http://localhost:8080/products/{id}(id=${product.getId()})}">Link</a>
         </td>
-<!--        <td>
-            <a th:method="DELETE" th:href="@{http://localhost:8080/deleteProduct/{id}(id=${product.getId()})}">Delete</a>
-        </td>-->
     </tr>
 </table>
 
