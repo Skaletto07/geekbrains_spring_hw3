@@ -1,9 +1,8 @@
 package com.kostkin.hw_3.controllers;
 
-import com.kostkin.hw_3.models.Products;
+import com.kostkin.hw_3.models.Product;
 import com.kostkin.hw_3.repositories.ProductRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,37 +18,29 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String all(Model model) {
-        List<Products> all = repository.findAll();
-        model.addAttribute("products", all);
-        return "products";
+    public List<Product> all() {
+        return repository.findAll();
     }
 
     @GetMapping("/products/{id}")
-    public String findOneById(Model model, @PathVariable Long id) {
-        Products product = null;
-        Optional<Products> byId = repository.findById(id);
+    public Product findOneById(@PathVariable Long id) {
+        Product product = null;
+        Optional<Product> byId = repository.findById(id);
         if (byId.isPresent()) {
             product = byId.get();
         }
-        model.addAttribute("product", product);
-        return "product";
+        return product;
     }
 
-    @GetMapping("/add")
-    public String add(@ModelAttribute("product") Products product) {
-        return "newProduct";
-    }
 
-    @PostMapping("/update")
-    public String addProduct(@ModelAttribute("product") Products product) {
+    @PostMapping("/products/add")
+    public void addProduct(Product product) {
         repository.save(product);
-        return "redirect:/products";
+
     }
 
-    @PostMapping("/deleteProduct/{id}")
-    public String delete(@PathVariable long id) {
+    @PostMapping("/products/delete/{id}")
+    public void delete(@PathVariable long id) {
         repository.deleteById(id);
-        return "redirect:/products";
     }
 }
