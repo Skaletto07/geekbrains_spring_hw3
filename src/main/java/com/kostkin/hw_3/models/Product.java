@@ -22,8 +22,13 @@ public class Product {
 
     private String title;
 
-    private double cost;
+    private double price;
 
     private String secretKey;
 
+    public Product(Long id, String title, double price) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+    }
 }
