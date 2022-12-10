@@ -13,6 +13,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
     <script src="index.js"></script>
+    <script src="basket.js"></script>
 </head>
 <body>
 
@@ -22,16 +23,24 @@
             <tr>
                 <td>Id</td>
                 <td>Title</td>
-                <td>Cost</td>
+                <td>Price</td>
                 <td>Action</td>
+                <td>Add to basket</td>
+                <td>Delete from basket</td>
             </tr>
             <tbody>
-            <tr ng-repeat="p in products">
+            <tr ng-repeat="p in ProductPage.content">
                 <td>{{p.id}}</td>
                 <td>{{p.title}}</td>
-                <td>{{p.cost}}</td>
+                <td>{{p.price}}</td>
                 <td>
                     <button class="btn btn-danger" ng-click="delete(p.id)">Delete</button>
+                </td>
+                <td>
+                    <button class="btn btn-default btn-sm" ng-click="add()">Add to basket</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" ng-click="delete()">Delete from basket</button>
                 </td>
             </tr>
             </tbody>
