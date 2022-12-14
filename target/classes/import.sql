@@ -4,3 +4,9 @@ insert into product (title, price, secret_key) values ('Watermelon', 7.7, 'fdrew
 insert into product (title, price, secret_key) values ('Prune', 2.1, 'fds564af');
 insert into product (title, price, secret_key) values ('Water', 1, '5463435');
 insert into product (title, price, secret_key) values ('Beer', 12.1, '435764567');
+
+
+insert into user (id, username, password) values (1, 'user', 'pass');
+
+insert into role (user, authority) values (1, 'admin');
+insert into role (user, authority) values (1, 'super_admin');
